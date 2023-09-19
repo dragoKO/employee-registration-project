@@ -11,6 +11,7 @@ public class Employee {
 
     private String firstName;
     private String lastName;
+    private String password;
     private LocalDate birthDate;
     private String email;
     private String address;

@@ -1,6 +1,8 @@
 package com.cydeo.controller;
 
+import com.cydeo.model.Employee;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 
@@ -8,14 +10,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/employee")
 public class EmployeeController {
 
-    @RequestMapping("/create")
-   public String createEmployee(){
+    @RequestMapping("/register")
+    public String createEmployee(Model model) {
+
+        model.addAttribute("employee", new Employee());
 
 
-
-
-       return "employee/employee-create";
-   }
+        return "employee/employee-register";
+    }
 
 
 }
