@@ -3,6 +3,7 @@ package com.cydeo.model;
 import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.time.LocalDate;
@@ -13,8 +14,9 @@ import java.time.LocalDate;
 public class Employee {
 
 
-    @NotNull
+//    @NotNull(message = "can not be blank")
     @Size(max = 12, min = 2)
+    @NotBlank
     private String firstName;
     private String lastName;
     private String password;
