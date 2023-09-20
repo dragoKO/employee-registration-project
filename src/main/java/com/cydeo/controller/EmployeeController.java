@@ -2,8 +2,10 @@ package com.cydeo.controller;
 
 import com.cydeo.bootstrap.DataGenerator;
 import com.cydeo.model.Employee;
+import com.cydeo.repository.OracleDataBase;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -23,8 +25,10 @@ public class EmployeeController {
     }
 
     @PostMapping("/list")
-    public String employeeList() {
+    public String employeeList(@ModelAttribute("employee") Employee employee,Model model) {
 
+        OracleDataBase.safeEmployee(employee);
+        model.addAttribute("employees", OracleDataBase.readAllEmployees());
 
 
         return "employee/employee-list";
