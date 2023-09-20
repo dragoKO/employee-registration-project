@@ -30,16 +30,15 @@
             </tr>
             </thead>
             <tbody>
-            <tr>
+            <tr th:each="employee : ${employees}">
                 <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-
+                <td th:text="${employee.firstName}"></td>
+                <td th:text="${employee.lastName}"></td>
+                <td th:text="${#execInfo.getNow().get(1) - employee.birthday.getYear()}"></td>
+                <td th:text="${employee.address}"></td>
+                <td th:text="${employee.city}"></td>
+                <td th:text="${employee.state}"></td>
+                <td th:text="${employee.zipCode}"></td>
             </tr>
             </tbody>
         </table>

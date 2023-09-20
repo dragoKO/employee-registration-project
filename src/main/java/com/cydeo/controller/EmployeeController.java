@@ -3,11 +3,15 @@ package com.cydeo.controller;
 import com.cydeo.bootstrap.DataGenerator;
 import com.cydeo.model.Employee;
 import com.cydeo.repository.OracleDataBase;
+import lombok.Data;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import javax.validation.Valid;
+import java.time.LocalDate;
 
 
 @Controller
@@ -25,8 +29,7 @@ public class EmployeeController {
     }
 
     @PostMapping("/list")
-    public String employeeList(@ModelAttribute("employee") Employee employee,Model model) {
-
+    public String employeeList(@Valid @ModelAttribute("employee") Employee employee, Model model) {
         OracleDataBase.safeEmployee(employee);
         model.addAttribute("employees", OracleDataBase.readAllEmployees());
 
